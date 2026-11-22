@@ -11,6 +11,11 @@ Every story below was checked against reporting dated 22 November 2026
 (or late 21 November, dominating the 22 November news cycle). Stories from
 earlier days are named in the DATE CHECK box at the foot of the page and
 deliberately left out.
+
+Round 2 (late morning WIB, 22 Nov): refreshed with the Bahrain industrial
+strike, the COP31 3am draft and closing plenary, the Peru quake aftermath,
+and a new Africa briefs section; the stale Shenzhen summit feature was
+replaced and weak filler briefs swapped for real Sunday news.
 """
 import os
 from PIL import Image, ImageDraw, ImageFont
@@ -76,31 +81,36 @@ def kicker(draw, x, y, text, color=RED, size=11):
 # the world map; brief stories fill the region columns.
 STORIES = [
     dict(tier="lead", region="CLIMATE", place="ANTALYA, TURKEY",
-         headline="COP31 IN DEADLOCK AS TALKS SLIP INTO OVERTIME",
-         deck=("Nearly 200 nations fail to agree a new climate deal. "
-               "The draft drops every mention of fossil fuels and the $120bn "
-               "adaptation target — and admits the 1.5°C goal has been missed. "
-               "“It’s either a good deal or no deal,” says the EU’s Hoekstra."),
-         source="Reuters / BBC", pin=(30.7, 36.9)),
+         headline="COP31 NEARS A DEAL AS 3AM DRAFT LANDS",
+         deck=("Two days past its Friday deadline, the summit publishes its third "
+               "— supposedly final — cover text at 3am Sunday. President Kurum "
+               "calls it one “all parties can agree upon”; a closing plenary "
+               "is set for 9am. The text still names no fossil fuels and no "
+               "$120bn figure."),
+         source="Reuters / Carbon Brief", pin=(30.7, 36.9)),
     dict(tier="feature", region="THE GULF", place="STRAIT OF HORMUZ",
-         headline="IRAN SAYS IT SHOT DOWN TWO US DRONES",
-         deck=("The IRGC claims an MQ-9 over the Strait and an MQ-1 over Qeshm "
-               "Island; tankers are hit by projectiles near Oman."),
-         source="Al Jazeera / UKMTO", pin=(56.5, 26.5)),
+         headline="IRAN CLAIMS STRIKES ON TWO US PATRIOT RADARS",
+         deck=("The IRGC says a combined missile-and-drone operation hit two US "
+               "Patriot radars, as Tehran calls the US blockade “a hostile act” "
+               "— and says reopening Hormuz “would not be difficult”."),
+         source="ANI / IRGC", pin=(56.5, 26.5)),
     dict(tier="feature", region="UKRAINE", place="KYIV",
          headline="RUSSIA’S 400-DRONE BARRAGE; MISSILE CRASHES IN POLAND",
          deck=("One of the war’s largest aerial attacks — 400 drones, 110 missiles "
-               "— as a missile and a drone come down in Poland."),
+               "— as a missile and a drone come down in Poland. Zelenskyy says "
+               "NATO membership is Ukraine’s clearest guarantee."),
          source="Reuters / AP", pin=(30.5, 50.4)),
-    dict(tier="feature", region="DIPLOMACY", place="SHENZHEN, CHINA",
-         headline="TRUMP MEETS XI AND PUTIN AT APEC",
-         deck=("The three leaders meet in Shenzhen as Trump says an Iran deal could "
-               "last 20 years and eyes regime change."),
-         source="Reuters", pin=(114.1, 22.5)),
+    dict(tier="feature", region="THE GULF", place="MANAMA, BAHRAIN",
+         headline="IRANIAN STRIKE SETS BAHRAIN PLANT ABLAZE",
+         deck=("Bahrain says an Iranian attack hit an industrial facility, "
+               "sparking a fire, as air defences intercept incoming attacks "
+               "across the Gulf."),
+         source="Bahrain ministry / CNA", pin=(50.6, 26.2)),
     dict(tier="feature", region="THE BALTIC", place="GULF OF FINLAND",
          headline="DRONES SET RUSSIAN CARGO SHIP ABLAZE OFF FINLAND",
          deck=("A Russian cargo ship bound for Kaliningrad is hit by two drones; "
-               "the crew evacuates as the ship burns."),
+               "the crew evacuates as the ship burns. Finland tightens security "
+               "and probes a suspected helicopter incursion."),
          source="Reuters", pin=(23.0, 59.5)),
     dict(tier="pin", region="EUROPE", place="TALLINN, ESTONIA",
          headline="Estonia to shut its Russian border",
@@ -129,14 +139,15 @@ STORIES = [
     dict(tier="pin", region="ASIA", place="NEW DELHI, INDIA",
          headline="Modi opens Nitish Setu; Akvan disrupts flights",
          deck=("The PM inaugurates the Nitish Setu bridge linking Patna and "
-               "Vaishali as Cyclone Akvan forces 14 flight cancellations at "
-               "Ranchi."),
+               "Vaishali as Nepal’s PM Shah arrives seeking flood aid and "
+               "better connectivity."),
          source="PTI", pin=(77.2, 28.6)),
-    dict(tier="pin", region="SPORT", place="WELLINGTON, NZ",
-         headline="India face New Zealand in first Test",
-         deck=("India’s Test tour opens in windy Wellington; KL Rahul’s "
-               "evolution is the talk of the build-up."),
-         source="Cricbuzz", pin=(174.8, -41.3)),
+    dict(tier="pin", region="AMERICAS", place="LIMA, PERU",
+         headline="Peru quake: 152 homes uninhabitable",
+         deck=("A revised inventory dated Sunday counts 152 homes uninhabitable "
+               "after Friday’s M6.9 quake; rescue and aid work continues in "
+               "the affected regions."),
+         source="Peruvian govt", pin=(-77.0, -12.0)),
     dict(tier="pin", region="SPORT", place="TURIN, ITALY",
          headline="ATP Finals: Alcaraz v Shelton, Zverev v Medvedev",
          deck="The top four seeds contest the semi-finals in Turin.",
@@ -148,53 +159,57 @@ BRIEFS = [
         ("Israel", "Eisenkot invites Netanyahu’s Likud to coalition talks; Lieberman says ousting Netanyahu is still his “main goal”."),
         ("Gaza", "Israel alleges Hamas is tightening its grip on the Strip."),
         ("Lebanon", "UNIFIL says people in the south still bear the consequences of fighting with Israel."),
-        ("Hormuz", "Iran says the Qeshm Island blasts were US munitions disposal, not a fresh attack."),
-        ("Gulf", "US CENTCOM rejects Iran’s claim its missiles hit an F-16 over the Gulf."),
+        ("Hormuz", "Araghchi says reopening the Strait “would not be difficult” if the US accepts reasonable conditions."),
+        ("Basra", "Four dead and 35 injured as fire breaks out at the Hartha thermal power station in northern Basra."),
     ]),
     ("EUROPE", [
         ("Denmark", "Russia masterminded a plot to kill a US-Ukrainian citizen, Copenhagen says."),
         ("France", "Prosecutors probe Depardieu and an author over a gang-rape claim."),
-        ("Britain", "Blair: the UK should rejoin the EU only if it innovates on technology."),
+        ("Portugal", "Thousands protest against inflation in Lisbon."),
         ("Spain", "Sánchez extends the bank tax to 2027 and puts the proceeds into housing."),
-        ("Football", "England beat world champions Spain — Ben White scored the third; Wales host Australia next."),
-        ("Norway", "A 21-metre Christmas tree is felled for the season."),
+        ("Football", "Real Madrid beat Celta Vigo; France’s injury-hit rugby side reach the final."),
+        ("Norway", "Supreme Court rules climate-disputed oil licences invalid in a landmark ruling."),
     ]),
     ("ASIA-PACIFIC", [
         ("Japan", "Japanese forces to use Indian facilities for live-fire training — a first."),
-        ("South Korea", "A $75,000 bounty is repeated for reporting exam cheating."),
-        ("Pakistan", "Climate minister Musadik Masood Malik to attend the SCO dialogue in New Delhi."),
-        ("India", "ICMR completes 100 technology transfers and signs 20 licensing deals."),
-        ("India", "Air India extends its Jeddah suspension to 24 November."),
-        ("India", "Chennai International Book Fair 2027 set for 16–18 January."),
+        ("Myanmar", "A magnitude 4.1 earthquake strikes near Naypyitaw in the early hours of Sunday."),
+        ("Nepal", "PM Shah visits Delhi for flood aid talks."),
+        ("EU–Indonesia", "Brussels signs the CEPA and IPA trade and investment agreements with Jakarta."),
+        ("Voyager-1", "NASA’s Voyager-1 reaches a historic milestone: one light-day from Earth."),
+        ("TikTok", "TikTok launches a global deepfake-detection tool for public figures ahead of European elections."),
     ]),
     ("AMERICAS", [
         ("US–Canada", "Hegseth sets fresh limits on US-Canada defence ties."),
         ("White House", "Melania Trump wants more Russia-Ukraine ceasefires before Christmas."),
         ("Los Angeles", "A man is convicted of arson in wildfires that killed 12."),
-        ("New York", "The “Turtle Lady” of Manhattan — Lorri Cramer took in 680 baby turtles one summer."),
-        ("Florida", "Relentless storms bring historic flooding up the coast."),
+        ("Virginia", "First child death from measles in Virginia since 1978, as US cases climb."),
+        ("Florida", "Storms bring historic flooding up the coast."),
     ]),
     ("SPORT", [
         ("NBA", "James Harden passes Kobe Bryant for third on the all-time 50-point games list."),
-        ("Cricket", "Pat Cummins keeps unanimous support to remain Australia’s Test captain."),
+        ("Cricket", "Australia bowl first as injured Smith misses the South Africa decider."),
         ("Snooker", "Advani and Ramachandran win their openers at the World Championship."),
         ("F1", "The Russell–Verstappen feud resurfaces in Las Vegas."),
     ]),
     ("MARKETS & TECH", [
         ("Markets", "Wall Street ends its worst week since 2020 — Nasdaq −5.28% on Friday, S&P 500 in correction, VIX 35.89."),
         ("Oil & gold", "Crude futures fall more than 3%; Brent $92.57, gold $3,517 at Friday’s close."),
-        ("Climate tech", "The COP31 AI pledge fails to attract major US tech firms."),
-        ("India", "Chahal joins the BJP and takes a role in its OBC Morcha; Diljit Dosanjh plays Ahmedabad."),
+        ("ECB", "EU launches the search for a new ECB chief as Christine Lagarde resigns."),
+        ("UN", "UN-backed talks agree to keep working toward a 2028 treaty on autonomous lethal weapons."),
+    ]),
+    ("AFRICA", [
+        ("DRC", "Kenya discharges its last Ebola patient as the DRC death toll passes 5,300."),
+        ("Ghana", "Ghana unveils ‘Heritage Series’ banknotes honouring Nkrumah, Kofi Annan and Makola traders."),
     ]),
 ]
 
 DATE_CHECK = (
-    "LEFT OUT ON PURPOSE — stories from earlier days, not 22 Nov: the Peru M6.9 quake "
-    "(Fri 20 Nov); Iran’s strikes on the US base in Kuwait and Bahrain (Wed 18 Nov); the US "
-    "strike on Qeshm Island (Tue 17 Nov); the ADNOC vessel attack (17 Nov); Cyclone Akvan’s "
-    "landfall (earlier in the week)."
+    "LEFT OUT ON PURPOSE — stories from earlier days, not 22 Nov: Iran’s strikes on the US "
+    "base in Kuwait and Bahrain (Wed 18 Nov); the US strike on Qeshm Island (Tue 17 Nov); "
+    "the ADNOC vessel attack (17 Nov); the Shenzhen APEC summit (Sat 21 Nov); Cyclone "
+    "Akvan’s landfall (earlier in the week). The Peru quake IS in — Sunday’s revised toll."
 )
-SOURCES_LINE = ("Sources: Reuters · BBC · AP · Al Jazeera · UKMTO · USGS · ATP · Cricbuzz · PTI — "
+SOURCES_LINE = ("Sources: Reuters · BBC · AP · Al Jazeera · UKMTO · USGS · ATP · ANI · Carbon Brief — "
                 "checked against reporting of 22 Nov 2026. Drawn entirely in code; no photographs.")
 
 # ---------------------------------------------------------------- world map
@@ -412,6 +427,28 @@ def draw_summit_scene(draw, x, y, w, h):
             draw.rectangle([fx, y + 26, fx + 34, y + 34], fill=(185, 28, 28))
 
 
+def draw_fire_scene(draw, x, y, w, h):
+    """Burning industrial plant at night (Bahrain feature illustration)."""
+    draw.rectangle([x, y, x + w, y + h], fill=(30, 18, 20))
+    # plant silhouette
+    draw.rectangle([x + 10, y + h - 26, x + w - 10, y + h], fill=(70, 60, 60))
+    draw.rectangle([x + 20, y + h - 44, x + 34, y + h - 26], fill=(70, 60, 60))
+    draw.rectangle([x + 44, y + h - 38, x + 56, y + h - 26], fill=(70, 60, 60))
+    # flames
+    for fx in (x + w // 2 - 14, x + w // 2 + 10):
+        fy = y + h - 26
+        draw.polygon([(fx - 12, fy), (fx, fy - 20), (fx + 12, fy)], fill=(255, 140, 0))
+        draw.polygon([(fx - 6, fy), (fx, fy - 12), (fx + 6, fy)], fill=(255, 220, 0))
+    # smoke puffs
+    for i, r in enumerate((6, 8, 10)):
+        sx = x + w // 2 + 6 + i * 8
+        sy = y + 12 + i * 2
+        draw.ellipse([sx - r, sy - r, sx + r, sy + r], outline=(150, 150, 150), width=1)
+    # sparks
+    for sx, sy in ((x + 30, y + 10), (x + w - 30, y + 14), (x + w - 50, y + 6)):
+        draw.ellipse([sx - 2, sy - 2, sx + 2, sy + 2], fill=(255, 200, 40))
+
+
 def draw_ship_scene(draw, x, y, w, h):
     draw.rectangle([x, y, x + w, y + h], fill=(214, 232, 244))
     for wy in range(3):
@@ -459,8 +496,8 @@ def draw_lead(draw, y):
     draw.rectangle([ix, y, MX + CW, y + h], fill=SKY, outline=RULE, width=1)
     draw_globe(draw, ix + 78, y + 62, 44)
     draw_factory(draw, ix + 190, y + 100, 66, 56)
-    draw.text((ix + 12, y + 118), "1.5°C GOAL: MISSED", font=SANS_B(13), fill=RED)
-    draw.text((ix + 12, y + 138), "The world enters overshoot",
+    draw.text((ix + 12, y + 118), "DEAL IN SIGHT", font=SANS_B(13), fill=(34, 120, 60))
+    draw.text((ix + 12, y + 138), "Closing plenary 9am Sunday",
               font=SANS(11), fill=MUTED)
     tx = MX + 14
     yy = kicker(draw, tx, y + 10, f"{lead['place']}  —  {lead['region']}", size=11)
@@ -474,9 +511,9 @@ def draw_lead(draw, y):
 
 def draw_features(draw, y):
     feats = [s for s in STORIES if s["tier"] == "feature"]
-    scenes = [draw_drone_scene, draw_missile_scene, draw_summit_scene,
+    scenes = [draw_drone_scene, draw_missile_scene, draw_fire_scene,
               draw_ship_scene]
-    h = 176
+    h = 188
     cw = (CW - 3 * 10) // 4
     for i, st in enumerate(feats):
         x = MX + i * (cw + 10)
@@ -500,7 +537,7 @@ def draw_map_section(draw, y):
     mh = 100
     draw_dotted_map(draw, MX, y, CW, mh)
     pins = [s for s in STORIES if s.get("pin")]
-    offsets = {1: (-30, 14), 2: (0, -16), 3: (28, -10), 4: (0, -16),
+    offsets = {1: (-30, 14), 2: (0, -16), 3: (28, -10), 4: (26, 6),
                5: (-8, -30), 6: (26, -28), 7: (0, -16), 8: (0, -16),
                9: (0, -16), 10: (0, -16), 11: (0, -16), 12: (-28, -22)}
     for n, st in enumerate(pins, 1):
@@ -509,12 +546,12 @@ def draw_map_section(draw, y):
         draw_pin(draw, px, py, n, dx=dx, dy=dy)
     y += mh + 6
     # legend: 2 rows x 6 entries
-    leg = ["1. Antalya — COP31", "2. Hormuz — Drones downed",
-           "3. Kyiv — 400-drone barrage", "4. Shenzhen — Trump-Xi-Putin",
+    leg = ["1. Antalya — COP31", "2. Hormuz — Patriot radars hit",
+           "3. Kyiv — 400-drone barrage", "4. Manama — Bahrain plant ablaze",
            "5. Baltic — Ship ablaze", "6. Tallinn — Border shut",
            "7. Brasília — Bolsonaro ICU", "8. Sinaloa — Chapo Isidro",
            "9. Washington — Terror alert", "10. New Delhi — Modi bridge",
-           "11. Wellington — India v NZ", "12. Turin — ATP semis"]
+           "11. Lima — Quake aftermath", "12. Turin — ATP semis"]
     fnt = SANS(9)
     colw = CW // 6
     for i, item in enumerate(leg):
@@ -529,7 +566,7 @@ def draw_briefs(draw, y, bottom):
     columns = [
         [BRIEFS[0], BRIEFS[1]],
         [BRIEFS[2], BRIEFS[3]],
-        [BRIEFS[4], BRIEFS[5]],
+        [BRIEFS[4], BRIEFS[5], BRIEFS[6]],
     ]
     for ci, groups in enumerate(columns):
         x = MX + ci * (colw + 14)
